@@ -4,7 +4,8 @@ const { FOOD_KEY } = process.env;
 //CONTROLLER FUNCTIONS
 const getApiInfo = async () => {
   const apiUrl = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?${FOOD_KEY}&addRecipeInformation=true&number=100`
+    //
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API}&addRecipeInformation=true&number=100`
   );
 
   const apiInfo = await apiUrl.data.results.map(e => {
