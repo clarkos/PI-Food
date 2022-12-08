@@ -1,10 +1,10 @@
-const { Router } = require('express');
+// const { Router } = require('express');
+// const router = Router();
 const { dietTypesDb } = require('../controllers/types')
 const { Diet } = require('../db');
 
-const router = Router();
 
-router.get('/', async (req, res, next) => {
+const dietTypeFn = async (req, res) => {
     try {
         dietTypesDb.forEach(e => {
             Diet.findOrCreate({
@@ -14,8 +14,8 @@ router.get('/', async (req, res, next) => {
         const dietTypes = await Diet.findAll();
         res.send(dietTypes)
     } catch (error) {
-        next(error)
+        res.status(400).send(error)
     }
-})
+}
 
-module.exports = router;
+module.exports = { dietTypeFn };

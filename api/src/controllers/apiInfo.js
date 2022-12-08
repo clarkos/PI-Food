@@ -1,14 +1,14 @@
 const axios = require("axios");
-const { FOOD_KEY } = process.env;
 
 //CONTROLLER FUNCTIONS
 const getApiInfo = async () => {
-  const apiUrl = await axios.get(
-    //
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_API}&addRecipeInformation=true&number=100`
+  
+  const { FOOD_KEY } = process.env;
+  const apiReturn = await axios.get(
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${FOOD_KEY}&addRecipeInformation=true&number=100`
   );
 
-  const apiInfo = await apiUrl.data.results.map(e => {
+  const apiInfo = apiReturn.data.results.map(e => {
     return {
       id: e.id,
       image: e.image,
@@ -25,6 +25,19 @@ const getApiInfo = async () => {
         }
       })
     }
+
+    /* return {
+      name: e.title,
+      image: e.image,
+      summary: e.summary,
+      healthScore: e.healthScore,
+      stepByStep: e.analyzedInstructions[0]?.steps.map((e) => {
+        return {
+          step: e.number,
+          do: e.step
+        }
+      })
+    }; */
   })
   return apiInfo;
 };
