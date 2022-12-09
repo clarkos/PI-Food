@@ -3,31 +3,31 @@ const { Router } = require('express');
 // const recipesRouter = require('./recipes');
 // const typesRouter = require('./types');
 // const recipeRouter = require('./recipe');
+const { dietTypeFn } = require('./types');
 const { recipesGetAll,
         recipeById,
         newRecipe,
         modRecipe } = require('./recipes');
-const { dietTypeFn } = require('./types');
 
-const router = Router();
+const app = Router();
 
-// Configurar los routers - Ejemplo: router.use('/auth', authRouter);
-// router.use('/recipes', recipesRouter);
-// router.use('/recipe', recipeRouter);
-// router.use('/types', typesRouter);
+// Configurar los routers - Ejemplo: app.use('/auth', authRouter);
+// app.use('/recipes', recipesRouter);
+// app.use('/recipe', recipeRouter);
+// app.use('/types', typesRouter);
 
-router.route('/recipes')
+app.route('/recipes')
         .get(recipesGetAll);
 
-router.route('/recipes/:id')
+app.route('/recipes/:id')
         .get(recipeById);
 
-router.route('/recipe')
+app.route('/recipe')
         .post(newRecipe)
         .put(modRecipe);
 
-router.route('/types')
+app.route('/types')
         .get(dietTypeFn);
 
 
-module.exports = router;
+module.exports = app;
