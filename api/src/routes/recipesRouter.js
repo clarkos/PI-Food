@@ -1,22 +1,22 @@
 // const { Router } = require('express');
 const { Recipe, Diet } = require("../db");
 const allRecipes = require("../controllers/allRecipes");
-const dbById = require("../controllers/dbById");
-const apiById = require("../controllers/apiById");
+const dbById = require("../controllers/dbGetId");
+const apiById = require("../controllers/apiGetID");
 
-// const router = Router();
-const regExRule =
-  /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+/* const regExRule =
+  /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/; */
 
 const recipesGetAll = async (req, res) => {
   try {
     const { name } = req.query;
-    let getAllRecipes = await allRecipes();
+    let recipes = await allRecipes(name);
 
     if (name) {
-      let recipeByName = await getAllRecipes.filter((e) =>
+      let recipeByName = await recipes.filter((e) =>
         e.name.toLowerCase().includes(name.toString().toLowerCase())
       );
+
       if (recipeByName.length) {
         let recipes = recipeByName.map((e) => {
           return {
@@ -31,7 +31,7 @@ const recipesGetAll = async (req, res) => {
       }
       return res.status(404).send("Sorry, recipe not found");
     } else {
-      let recipes = getAllRecipes.map((e) => {
+      let recipes = recipes.map((e) => {
         return {
           image: e.image,
           name: e.name,
@@ -49,36 +49,6 @@ const recipesGetAll = async (req, res) => {
 
 const recipeById = async (req, res) => {
   const { id } = req.params;
-  try {
-    if (regExRule.test(id)) {
-      let dbRecipesById = await dbById(id);
-      return res.status(200).json(dbRecipesById);
-    } else {
-      let apiRecipe = await apiById(id);
-      if (apiRecipe.data.id) {
-        let recipeDetails = {
-          image: apiRecipe.data.image,
-          name: apiRecipe.data.title,
-          dishTypes: apiRecipe.data.dishTypes,
-          dietTypes: apiRecipe.data.diets,
-          summary: apiRecipe.data.summary,
-          score: apiRecipe.data.spoonacularScore,
-          healthScore: apiRecipe.data.healthScore,
-          steps: apiRecipe.data.analyzedInstructions[0]?.steps.map(
-            (el) => {
-              return {
-                number: el.number,
-                step: el.step,
-              };
-            }
-          ),
-        };
-        return res.status(200).send(recipeDetails);
-      }
-    }
-  } catch {
-    return res.status(404).send("Recipe not found");
-  }
 };
 
 const newRecipe = async (req, res) => {
@@ -103,7 +73,11 @@ const newRecipe = async (req, res) => {
   }
 };
 
-const modRecipe = async (res, req) => {};
+const modRecipe = async (req, res) => {
+  res.send(
+    console.log("esta es la funcion de modificacion de receta de la Db")
+  );
+};
 
 module.exports = {
   recipesGetAll,
