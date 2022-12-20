@@ -1,4 +1,4 @@
-const { allRecipes, recipeId, recipesDb } = require("../request");
+const { allRecipes, recipeId, recipesDb } = require("../controller");
 const { Recipe, Diet } = require('../db');
 
 
