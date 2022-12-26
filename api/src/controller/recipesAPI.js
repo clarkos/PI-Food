@@ -17,7 +17,6 @@ const recipesApi = async function () {
       return {
         id: r.id,
         title: r.title,
-        score: r.spoonacularScore,
         healthScore: r.healthScore,
         img: r.image,
         diets: r.diets,

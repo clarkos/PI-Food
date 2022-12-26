@@ -9,10 +9,9 @@ const recipeId = async (id) => {
       {headers: { "Accept-Encoding": "gzip,deflate,compress" }}
     );
     const r = recipe.data;
-    const recipeId = {
+    const recipeChosen = {
       id: r.id,
       title: r.title,
-      score: r.spoonacularScore,
       healthScore: r.healthScore,
       dishTypes: r.dishTypes,
       img: r.image,
@@ -20,7 +19,7 @@ const recipeId = async (id) => {
       instructions: r.instructions,
       diets: r.diets,
     };
-    return recipeId;
+    return recipeChosen;
   } catch (e) {
     res
       .status(error?.status || 500)

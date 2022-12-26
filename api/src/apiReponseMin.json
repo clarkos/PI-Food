@@ -1,0 +1,177 @@
+{
+  "results": [
+    {
+      "vegetarian": false,
+      "vegan": false,
+      "glutenFree": true,
+      "dairyFree": false,
+      "veryHealthy": false,
+      "cheap": false,
+      "veryPopular": false,
+      "sustainable": false,
+      "lowFodmap": false,
+      "weightWatcherSmartPoints": 13,
+      "gaps": "no",
+      "preparationMinutes": -1,
+      "cookingMinutes": -1,
+      "aggregateLikes": 7,
+      "healthScore": 12,
+      "creditsText": "foodista.com",
+      "sourceName": "foodista.com",
+      "pricePerServing": 235.4,
+      "id": 637569,
+      "title": "Cheese Pork Chops",
+      "readyInMinutes": 30,
+      "servings": 4,
+      "sourceUrl": "http://www.foodista.com/recipe/B8SJ2DD4/cheese-pork-chops",
+      "image": "https://spoonacular.com/recipeImages/637569-312x231.jpg",
+      "imageType": "jpg",
+      "summary": "Cheese Pork Chops is a <b>gluten free and primal</b> main course. This recipe serves 4 and costs $2.35 per serving. One serving contains <b>417 calories</b>, <b>35g of protein</b>, and <b>30g of fat</b>. This recipe from Foodista has 7 fans. A mixture of dijon mustard, gruyere cheese, salt and pepper, and a handful of other ingredients are all it takes to make this recipe so scrumptious. To use up the salt and pepper you could follow this main course with the <a href=\"https://spoonacular.com/recipes/dr-pepper-cake-with-flour-cooked-frosting-539165\">Dr. Pepper Cake with Flour Cooked Frosting</a> as a dessert. From preparation to the plate, this recipe takes about <b>30 minutes</b>. All things considered, we decided this recipe <b>deserves a spoonacular score of 60%</b>. This score is solid. Try <a href=\"https://spoonacular.com/recipes/cream-cheese-pork-chops-397985\">Cream Cheese Pork Chops</a>, <a href=\"https://spoonacular.com/recipes/cheese-onion-pork-chops-222073\">Cheese & onion pork chops</a>, and <a href=\"https://spoonacular.com/recipes/pork-chops-and-cheese-potatoes-121722\">Pork Chops and Cheese Potatoes</a> for similar recipes.",
+      "cuisines": [],
+      "dishTypes": [
+        "lunch",
+        "main course",
+        "main dish",
+        "dinner"
+      ],
+      "diets": [
+        "gluten free",
+        "primal"
+      ],
+      "occasions": [],
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "In a heavy bottom skillet melt the butter with the olive oil. Saut` the pork chops over medium high 3 minutes on each sided. Lower the heat to medium and cook for another 5 to 6 minutes for side.Salt and pepper to taste.Meanwhile turn on the broil.",
+              "ingredients": [
+                {
+                  "id": 1102047,
+                  "name": "salt and pepper",
+                  "localizedName": "salt and pepper",
+                  "image": "salt-and-pepper.jpg"
+                },
+                {
+                  "id": 10010062,
+                  "name": "pork chops",
+                  "localizedName": "pork chops",
+                  "image": "pork-chops.jpg"
+                },
+                {
+                  "id": 4053,
+                  "name": "olive oil",
+                  "localizedName": "olive oil",
+                  "image": "olive-oil.jpg"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ],
+              "length": {
+                "number": 8,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 2,
+              "step": "Mix together in a bowl the heavy cream, mustard and the cheese.",
+              "ingredients": [
+                {
+                  "id": 1053,
+                  "name": "heavy cream",
+                  "localizedName": "heavy cream",
+                  "image": "fluid-cream.jpg"
+                },
+                {
+                  "id": 2046,
+                  "name": "mustard",
+                  "localizedName": "mustard",
+                  "image": "regular-mustard.jpg"
+                },
+                {
+                  "id": 1041009,
+                  "name": "cheese",
+                  "localizedName": "cheese",
+                  "image": "cheddar-cheese.png"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "step": "Remove the chops from the stove and place them in a oven proof dish.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404794,
+                  "name": "stove",
+                  "localizedName": "stove",
+                  "image": "oven.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "oven.jpg"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Spread the cheese-cream mixture over the chops and broil for about 5 minutes.",
+              "ingredients": [
+                {
+                  "id": 1041009,
+                  "name": "cheese",
+                  "localizedName": "cheese",
+                  "image": "cheddar-cheese.png"
+                },
+                {
+                  "id": 0,
+                  "name": "spread",
+                  "localizedName": "spread",
+                  "image": ""
+                },
+                {
+                  "id": 1053,
+                  "name": "cream",
+                  "localizedName": "cream",
+                  "image": "fluid-cream.jpg"
+                }
+              ],
+              "equipment": [],
+              "length": {
+                "number": 5,
+                "unit": "minutes"
+              }
+            }
+          ]
+        }
+      ],
+      "spoonacularSourceUrl": "https://spoonacular.com/cheese-pork-chops-637569"
+    }
+  ],
+  "offset": 0,
+  "number": 1,
+  "totalResults": 1320
+}

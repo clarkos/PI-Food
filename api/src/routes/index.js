@@ -13,8 +13,7 @@ const {
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+// Configurar los routers - Ejemplo: router.use('/auth', authRouter);
 
 router.get("/recipes", async (req, res) => {
   const { name } = req.query;
@@ -54,10 +53,11 @@ router.get("/types", async (req, res) => {
 });
 
 router.post("/recipe", async (req, res) => {
-  const { title, summary, score, healthScore, instructions, diet } = req.body;
-  if (!title || !summary || !(diet.length >= 1)) return res.status(404).json({ msg: "fail elements" });
+  const { title, summary, healthScore, instructions, diet } = req.body;
+  if (!title || !summary || !(diet.length >= 1))
+    return res.status(404).json({ msg: "fail elements" });
   await diet.forEach(async (d) => await addDiet(d));
-  await addRecipe(title, summary, score, healthScore, instructions, diet);
+  await addRecipe(title, summary, healthScore, instructions, diet);
   return res.status(200).json({ msg: "created complete" });
 });
 

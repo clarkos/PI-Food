@@ -5,7 +5,7 @@ const recipesDb = async () => {
         const recipesAll = await Recipe.findAll({
             include: {
                 model: Diet,
-                attributes: ['title']
+                attributes: ['name']
             }
         });
         const recipes = recipesAll.map((r) => {
@@ -13,10 +13,9 @@ const recipesDb = async () => {
                 id: r.id,
                 title: r.title,
                 summary: r.summary,
-                score: r.score,
                 healthScore: r.healthScore,
                 instructions: r.instructions,
-                diets: r.diets.map(diet => diet.title)
+                diets: r.diets.map(diet => diet.name)
             };
         })
         return recipes;
