@@ -1,0 +1,88 @@
+
+html{
+  --background:rgba(255, 255, 255, 0.35);
+}
+
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 3fr 6em  1fr 3fr;
+    grid-template-areas:
+      "title title"
+      "summary img"
+      "dishTypes score"
+      "hideshow hideshow"
+      "instructions instructions";
+    grid-gap: 0.2rem;
+    
+  }
+  
+.hideshow{
+  /* background: yellow; */
+  display: flex;
+  justify-content: center;
+}
+
+  .title{
+    /* background: grey; */
+    margin: 0;
+    grid-area: title;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.1fr;
+  }
+
+  
+  
+  .summary{
+    /* background: red; */
+    padding: 0.5rem;
+    font-size: 20px;
+    grid-area: summary;
+    white-space: pre-line;
+    word-wrap: break-word;
+    background: var(--background);
+    
+  }
+ 
+  
+  .img{
+    /* background: purple; */
+    grid-area: img;
+    background: var(--background);
+  }
+  
+  .dishTypes{
+    /* background: blue; */
+    grid-area: dishTypes;
+    background: var(--background);
+  }
+  
+  .score{
+    /* background: #add8e6; */
+    grid-area: score;
+    background: var(--background);
+  }
+  
+  .instructions{
+    grid-area: instructions;
+  }
+  
+  @media (max-width: 850px){
+    .container{
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 3fr 3fr 1fr 1fr 3fr;
+        grid-template-areas:
+          "title title"
+          "img img"
+          "summary summary"
+          "dishTypes score"
+          'hideshow hideshow'
+          "instructions instructions"
+          
+    }
+    
+  }
+  
+  

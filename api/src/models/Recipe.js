@@ -1,37 +1,54 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
+// Receta con las siguientes propiedades:
+// ID: *
+// Nombre *
+// Resumen del plato *
+// Puntuación
+// Nivel de "comida saludable"
+// Paso a paso
+
+
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define(
-    "recipe",
-    {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      summary: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      score: {
-        type: DataTypes.INTEGER,
-      },
-      healthScore: {
-        type: DataTypes.INTEGER,
-      },
-      steps: {
-        type: DataTypes.STRING,
-      },
+  return sequelize.define('recipe', {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1,
+      primaryKey: true
     },
-    {
-      timestamps: false,
-    }
-  );
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    summary: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    }, 
+    score: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0, 
+      validate : {
+        max: 100,
+        min: 0
+      }
+    }, 
+    healthScore: {
+      type: DataTypes.FLOAT, 
+      defaultValue: 0,
+      validate: {
+        max:100,
+        min: 0
+      }
+    }, 
+    steps: {
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: true,
+    }, 
+    image: {
+      type: DataTypes.TEXT
+    }, 
+  });
 };
+

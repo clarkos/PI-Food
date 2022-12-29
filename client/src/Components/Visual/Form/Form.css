@@ -1,0 +1,132 @@
+.containerForm {
+  display: grid;
+  /* background: rgba(255, 255, 255, 0.25); */
+  overflow-y: scroll;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.3fr 4fr 3fr;
+  grid-template-areas:
+    "buttonarea buttonarea"
+    "info instructions"
+    "diets instructions";
+  grid-gap: 0.2rem;
+  padding-left: 1em;
+  
+}
+
+.buttonarea {
+  grid-area: buttonarea;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.infoInput {
+  /* background: purple; */
+  grid-area: info;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.5fr 3fr;
+  grid-template-areas:
+    "top "
+    "summarybox";
+    /* max-height: 60rem; */
+    margin-bottom: 0;
+    height: max-content;
+}
+.buttoninfo{
+/* background: yellow; */
+color: black;
+/* border: 1px solid black; */
+display: inline-flex;
+flex-direction: column;
+width: 7rem;
+margin: 10px;
+justify-content:flex-start;
+}
+
+.buttoninfo label {
+  color: rgb(63, 63, 63)
+}
+.top {
+  /* background: orange; */
+  grid-area: top;
+  /* height: 2rem; */
+  display: flex;
+  align-items: center;
+}
+
+.summarybox {
+  /* background: rgb(0, 255, 13); */
+  grid-area: summarybox;
+  height: max-content;
+}
+
+.dietsInput {
+  /* background: blue; */
+  grid-area: diets;
+  width: 44em;
+  height: 20em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 0.2rem;
+}
+
+.instructionsInput {
+  /* background:gray; */
+  grid-area: instructions;
+  text-align: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 5fr 0.5fr;
+  grid-template-areas:
+    "header"
+    "insertTitle"
+    "insertSteps"
+    "addStep";
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  place-items: center stretch;
+}
+
+.header {
+  grid-area: header;
+}
+
+.insertTitle {
+  grid-area: insertTitle;
+  margin-left: 14px;
+}
+
+.insertSteps {
+  grid-area: insertSteps;
+}
+
+.addStep {
+  grid-area: addStep;
+  max-width: 23em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  
+  
+}
+
+
+.addStep div button{
+  align-items: center;
+}
+@media (max-width: 1200px) {
+  .containerForm {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr 3fr 4fr 1fr;
+    grid-template-areas:
+      "buttonarea"
+      "info"
+      "diets"
+      "instructions";
+  }
+}
