@@ -1,15 +1,15 @@
 const axios = require("axios").default;
 const { API_KEY } = process.env;
-const RecipeFormater = require("../controllers/FormatRecipe");
+const RecipeFormater = require("../routes/controllers/FormatRecipe");
 
 async function allAPI() {
   try {
-    let result = await axios.get(
-      'https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100'
+    let response = await axios.get(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
     );
-    let resolve = [];
-    if (result.data.results) {
-      result.data.results.map((item) => {
+    let callResp = [];
+    if (response.data.results) {
+      response.data.results.map((item) => {
         let obj = RecipeFormater(
           item.id,
           item.title,
@@ -17,23 +17,24 @@ async function allAPI() {
           item.image,
           item.diets
         );
-        resolve.push(obj);
+        callResp.push(obj);
       });
-      return resolve;
+      return callResp;
     }
   } catch (error) {
-    console.log("error getting with out name");
+    console.log("Something goes wrong when calling without name param");
+    console.log(error.message);
   }
 }
 
 async function recipeName(name) {
   try {
-    let result = await axios.get(
+    let response = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}&addRecipeInformation=true&number=100`
     );
-    let resolve = [];
-    if (result.data.results) {
-      result.data.results.map((item) => {
+    let callNameResp = [];
+    if (response.data.results) {
+      response.data.results.map((item) => {
         let obj = RecipeFormater(
           item.id,
           item.title,
@@ -41,12 +42,13 @@ async function recipeName(name) {
           item.image,
           item.diets
         );
-        resolve.push(obj);
+        callNameResp.push(obj);
       });
-      return resolve;
+      return callNameResp;
     }
   } catch (error) {
-    console.log("error in axios by name");
+    console.log("Something goes wrong when calling with name param");
+    console.log(error.message);
   }
 }
 
@@ -56,11 +58,10 @@ async function recipeId(id) {
       `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
     );
     let data = item.data;
-
     const dietList = [...data.diets];
-    data.vegetarian && dietList.push("vegetarian");
-    data.vegan && dietList.push("vegan");
-    data.glutenFree && dietList.push("gluten free");
+    // data.vegetarian && dietList.push("vegetarian");
+    // data.vegan && dietList.push("vegan");
+    // data.glutenFree && dietList.push("gluten free");
 
     let filtered = [...new Set(dietList)];
 
@@ -75,7 +76,6 @@ async function recipeId(id) {
     });
 
     const text = data.summary.replace(/<[^>]+>/g, "");
-
     let obj = {
       name: data.title,
       id: data.id,
@@ -87,10 +87,10 @@ async function recipeId(id) {
       score: data.spoonacularScore,
       steps: stepsFormated,
     };
-
     return obj;
   } catch (error) {
-    console.log("error axios by id");
+    console.log("Something goes wrong when calling by ID");
+    console.log(error.message);
     return [];
   }
 }

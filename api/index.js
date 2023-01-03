@@ -26,43 +26,38 @@ conn
   .sync({ force: true })
   .then(() => {
     server.listen(3001, () => {
-      console.log("%s listening at 3001"); // eslint-disable-line no-console
+      console.log("Server is listening at 3001"); // eslint-disable-line no-console
     });
   })
   .then(() => {
-    var glutenFree = Diet.create({ name: "gluten free" });
-    var Ketogenic = Diet.create({ name: "ketogenic" });
-    var lactoVegetarian = Diet.create({ name: "lacto vegetarian" });
-    var lactoOvoVegetarian = Diet.create({ name: "lacto ovo vegetarian" });
-    var ovoVegetarian = Diet.create({ name: "ovo vegetarian" });
-    var vegan = Diet.create({ name: "vegan" });
-    var pescetarian = Diet.create({ name: "pescatarian" });
-    var paleo = Diet.create({ name: "paleo" });
-    var paleolithic = Diet.create({ name: "paleolithic" });
-    var primal = Diet.create({ name: "primal" });
-    var whole30 = Diet.create({ name: "whole 30" });
-    var foodmap = Diet.create({ name: "fodmap friendly" });
-    var dairy = Diet.create({ name: "dairy free" });
+    const dietPreload = [
+      "gluten free",
+      "ketogenic",
+      "Vegetarian",
+      "lacto vegetarian",
+      "lacto ovo vegetarian",
+      "ovo vegetarian",
+      "vegan",
+      "pescatarian",
+      "paleolithic",
+      "primal",
+      "whole 30",
+      "fodmap friendly",
+      "dairy free",
+    ];
 
-    Promise.all([
-      glutenFree,
-      Ketogenic,
-      lactoVegetarian,
-      ovoVegetarian,
-      vegan,
-      pescetarian,
-      paleo,
-      primal,
-      whole30,
-      lactoOvoVegetarian,
-      paleolithic,
-      foodmap,
-      dairy,
-    ]).then((res) => {
-      console.log("Dietas precargadas");
-    });
+    const preLoad = new Promise((resolve, reject) => {
+      dietPreload.forEach((item) => {
+        Diet.create({ name: item });
+      })
+      resolve("Succesfull");
+    })
+      
+    preLoad.then((done) => {
+      console.log(`preload ${done}`)
+    })
   })
-  .catch (err => {
-    console.log("Ha ocurrido algo. Verifique el motivo del error para continuar")
-    console.log(err.message)
-  })
+  .catch((err) => {
+    console.log("Preload can't be done...");
+    console.log(err.message);
+  });

@@ -1,41 +1,40 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize");
 const { Recipe, Diet } = require("../../db");
-const { allAPI, recipeName, recipeId } = require("../axios/recipesAxios");
-const { FoCDietG } = require("../controllers/dietFoC");
+const { allAPI, recipeName, recipeId } = require("../../utils/recipesCalls");
+const { dietIndexer } = require("../controllers/dietIndexer");
 const Op = Sequelize.Op;
 const RecipeFormater = require("../controllers/FormatRecipe");
 
 router.get("/", async function (req, res) {
-    
-  if (!res.query){  //verifica si hay query, si no lo hay busca todas las recetas
-    try {
-    let dbResult = await Recipe.findAll({
-      include: [
-        { model: Diet, through: { attributes: [] } },
-      ],
-    });
-
-    let dbFormated = [];
-    dbResult.map((e) => {
-      let diets = e["diets"];
-      let formated = [];
-      diets.map((d) => formated.push(d["name"]));
-      let obj = RecipeFormater(e.id, e.name, e.score, e.image, formated);
-      dbFormated.push(obj);
-    });
-
-    //buscando en la API
-    let apiResult = await allAPI();
-    if (apiResult == null) return res.json({ message: "key over-used" });
-
-    //agregando recetas desde la base de datos
-    FoCDietG(apiResult);
-  } catch (error){
-    console.log("error in get from api")
-  }
-  }
   
+  //verifica si hay query, si no lo hay busca todas las recetas
+  if (!res.query) {
+    try {
+      // busca en la db
+      let dbResult = await Recipe.findAll({
+        include: [{ model: Diet, through: { attributes: [] } }],
+      });
+      let dbFormated = [];
+      dbResult.map((e) => {
+        let diets = e["diets"];
+        let formated = [];
+        diets.map((d) => formated.push(d["name"]));
+        let obj = RecipeFormater(e.id, e.name, e.score, e.image, formated);
+        dbFormated.push(obj);
+      });
+
+      //buscando en la API
+      let apiResult = await allAPI();
+      if (apiResult == null) return res.json({ message: "key over-used" });
+
+      //agregando recetas desde la base de datos
+      dietIndexer(apiResult);
+    } catch (error) {
+      console.log("error in get from api");
+    }
+  }
+
   // si se habilito el query busca por nombre y verifica
   let { name } = req.query;
   if (!name || name === "" || name === " ")
@@ -63,10 +62,9 @@ router.get("/", async function (req, res) {
     if (apiResult == null) return res.json({ message: "key over-used" });
 
     //agregando recetas desde la base de datos
-    FoCDietG(apiResult);
+    dietIndexer(apiResult);
 
-/* ######################## hay que terminar esta parte ##################################### */
-
+    /* ######################## hay que terminar esta parte ##################################### */
 
     //contando el total de recetas --> api+db
     let total = dbFormated.concat(apiResult);
@@ -85,7 +83,7 @@ router.get("/", async function (req, res) {
 router.get("/:id/", async function (req, res) {
   try {
     let { id } = req.params;
-    //verifica el formato, 
+    //verifica el formato,
     //si es uuid busca en la base de datos
     //si es nro busca en la api
 
@@ -121,7 +119,8 @@ router.get("/:id/", async function (req, res) {
       };
 
       return res.json(obj);
-    } else {  //Busqueda en la API
+    } else {
+      //Busqueda en la API
       let apiResult = await recipeId(id);
       return apiResult.length === 0
         ? res.json({ message: "error finding with id" })

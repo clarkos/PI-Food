@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize");
-const { Recipe, Diet } = require("../../db");
-// const {FoCDietP} = require('../controllers/dietFoC');
 const Op = Sequelize.Op;
+const { Recipe, Diet } = require("../../db");
 
 router.post("/", async (req, res) => {
   try {
@@ -24,9 +23,7 @@ router.post("/", async (req, res) => {
       score: score,
       healthScore: healthScore,
       steps,
-      image:
-        // "https://dclgroup.com.ar/wp-content/themes/unbound/images/No-Image-Found-400x264.png",
-        "https://i.stack.imgur.com/ZupHq.gif",
+      image: "https://i.stack.imgur.com/ZupHq.gif",
     });
 
     let formated = Array.isArray(diets) ? diets : [diets];
@@ -40,7 +37,6 @@ router.post("/", async (req, res) => {
     });
 
     await newRecipe.setDiets(matchingDiets);
-
     res.status(201).json(newRecipe);
   } catch (error) {
     console.log("ERROR MAKING POST REQUEST", error);

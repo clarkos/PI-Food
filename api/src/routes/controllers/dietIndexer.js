@@ -1,6 +1,6 @@
 const { Diet } = require("../../db");
 
-function FoCDietG(obj) {
+function dietIndexer(obj) {
   try {
     let group = [];
     obj.forEach(async (e) => {
@@ -17,8 +17,8 @@ function FoCDietG(obj) {
       await Diet.findOrCreate({ where: { name: e } });
     });
   } catch (error) {
-    console.log("error in FoCDietG", error);
+    console.log("error in dietIndexer", error);
   }
 }
 
-module.exports = { FoCDietG };
+module.exports = { dietIndexer };
