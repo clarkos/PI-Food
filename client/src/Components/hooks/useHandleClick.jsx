@@ -15,7 +15,7 @@ function useHandleClick(reference, initialState) {
     return () => {
       window.removeEventListener("click", pageClickEvent);
     };
-  }, [bool,reference]);
+  }, [bool, reference]);
 
   return [bool, setBool];
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import useHistoryDistpatch from "../../../Custom Hooks/useHistoryDispatch";
+import useHistoryDistpatch from "../../../hooks/useHistoryDispatch";
 import { filterDiet } from "../../../Redux/actions";
 import PropTypes from "prop-types";
 

@@ -30,7 +30,7 @@ describe("GET /recipes/:id/", () => {
         message: "error finding with id",
       });
     }));
-    it("should return message if theres no recipe with such id (DB)", () =>
+  it("should return message if theres no recipe with such id (DB)", () =>
     agent.get("/recipes/3b383fae-e738-11eb-ba80-0242ac130004").then((res) => {
       expect(res.body).to.deep.equal({
         message: "error finding with id",

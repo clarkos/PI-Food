@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import sushi from "../../../assets/fun-sashimi.png";
+import indexLogo from "../../../assets/indexLogo.png";
 
 const StartSearching = () => {
   return (
     <Div>
       <Title>The recipes will be shown here </Title>
 
-      <Img src={sushi} />
+      <Img src={indexLogo} />
     </Div>
   );
 };

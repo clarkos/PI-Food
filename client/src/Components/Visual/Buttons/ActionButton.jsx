@@ -1,5 +1,5 @@
 import React from 'react'
-import useHistoryDistpatch from '../../Custom Hooks/useHistoryDispatch';
+import useHistoryDistpatch from '../../hooks/useHistoryDispatch';
 import Container from '../../Styles/buttons'
 
 

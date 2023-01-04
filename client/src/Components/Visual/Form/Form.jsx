@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { postRecipe } from "../../Redux/actions";
 import { useDispatch } from "react-redux";
-import useDiets from "../../Custom Hooks/useDiets";
+import useDiets from "../../hooks/useDiets";
 import FormContainer from "./FormContainer";
 import ThanksForm from "./ThanksForm";
 import "./Form.css";

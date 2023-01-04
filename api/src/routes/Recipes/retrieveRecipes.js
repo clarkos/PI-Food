@@ -7,14 +7,14 @@ const Op = Sequelize.Op;
 const RecipeFormater = require("../controllers/FormatRecipe");
 
 router.get("/", async function (req, res) {
-  
+  let response;
   //verifica si hay query, si no lo hay busca todas las recetas
-  if (!res.query) {
+  if (!req.query.name) {
     try {
-      // busca en la db
       let dbResult = await Recipe.findAll({
         include: [{ model: Diet, through: { attributes: [] } }],
       });
+
       let dbFormated = [];
       dbResult.map((e) => {
         let diets = e["diets"];
@@ -30,62 +30,65 @@ router.get("/", async function (req, res) {
 
       //agregando recetas desde la base de datos
       dietIndexer(apiResult);
+      //contando el total de recetas --> api+db
+      let total = dbFormated.concat(apiResult);
+
+      //en caso que no haya recetas con ese nombre
+      if (total.length === 0)
+        res.json({
+          message:
+            "Can't find nothing... there are some problem with the API connection",
+        });
+      res.json(total);
     } catch (error) {
       console.log("error in get from api");
     }
-  }
+  } else {
+    let { name } = req.query; //siempre va a haber un valor por que se verifica en el front
+    try {
+      //buscando en DB
+      let dbResult = await Recipe.findAll({
+        where: { name: { [Op.like]: `%${name}%` } },
+        include: [
+          { model: Diet, attributes: ["name"], through: { attributes: [] } },
+        ],
+      });
 
-  // si se habilito el query busca por nombre y verifica
-  let { name } = req.query;
-  if (!name || name === "" || name === " ")
-    return res.status(200).json({ message: "must send a valid name in query" });
-  try {
-    //buscando en DB
-    let dbResult = await Recipe.findAll({
-      where: { name: { [Op.like]: `%${name}%` } },
-      include: [
-        { model: Diet, attributes: ["name"], through: { attributes: [] } },
-      ],
-    });
+      let dbFormated = []; // formateando la respuesta
+      dbResult.map((e) => {
+        let diets = e["diets"];
+        let formated = [];
+        diets.map((d) => formated.push(d["name"]));
+        let obj = RecipeFormater(e.id, e.name, e.score, e.image, formated);
+        dbFormated.push(obj);
+      });
 
-    let dbFormated = [];
-    dbResult.map((e) => {
-      let diets = e["diets"];
-      let formated = [];
-      diets.map((d) => formated.push(d["name"]));
-      let obj = RecipeFormater(e.id, e.name, e.score, e.image, formated);
-      dbFormated.push(obj);
-    });
+      //buscando en la API
+      let apiResult = await recipeName(name);
+      if (apiResult == null) return res.json({ message: "key over-used" });
 
-    //buscando en la API
-    let apiResult = await recipeName(name);
-    if (apiResult == null) return res.json({ message: "key over-used" });
+      //agregando recetas desde la base de datos
+      dietIndexer(apiResult);
 
-    //agregando recetas desde la base de datos
-    dietIndexer(apiResult);
+      //contando el total de recetas --> api+db
+      let total = dbFormated.concat(apiResult);
 
-    /* ######################## hay que terminar esta parte ##################################### */
+      //en caso que no haya recetas con ese nombre
+      if (total.length === 0)
+        res.json({
+          message: "Can't find nothing... Are you sure it' well written?",
+        });
 
-    //contando el total de recetas --> api+db
-    let total = dbFormated.concat(apiResult);
-    // let total = dbFormated
-
-    //en caso que no haya recetas con ese nombre
-    if (total.length === 0)
-      return res.json({ message: "couldnt find any results" });
-
-    res.json(total);
-  } catch (error) {
-    console.log("error in get ");
+      res.json(total);
+    } catch (error) {
+      console.log("error getting by 'recipe name'");
+    }
   }
 });
 
 router.get("/:id/", async function (req, res) {
   try {
     let { id } = req.params;
-    //verifica el formato,
-    //si es uuid busca en la base de datos
-    //si es nro busca en la api
 
     if (
       id.match(
@@ -100,7 +103,9 @@ router.get("/:id/", async function (req, res) {
         ],
       });
       if (dbResult === null)
-        return res.json({ message: "error finding with id" }); //envia mensaje si no encuentra resultados
+        return res.json({
+          message: "Can't find nothing... The ID is correct?",
+        }); //envia mensaje si no encuentra resultados
 
       let formated = [];
       dbResult.diets.map((e) => formated.push(e["name"]));
@@ -111,7 +116,6 @@ router.get("/:id/", async function (req, res) {
         score: dbResult["score"],
         image: dbResult["image"],
         diets: formated,
-
         summary: dbResult["summary"],
         healthScore: dbResult["healthScore"],
         steps: dbResult["steps"],
@@ -123,11 +127,11 @@ router.get("/:id/", async function (req, res) {
       //Busqueda en la API
       let apiResult = await recipeId(id);
       return apiResult.length === 0
-        ? res.json({ message: "error finding with id" })
+        ? res.json({ message: "error getting by 'ID'" })
         : res.json(apiResult);
     }
   } catch (error) {
-    console.log("error looking for ID", error);
+    console.log("error looking for ID", error.message);
   }
 });
 

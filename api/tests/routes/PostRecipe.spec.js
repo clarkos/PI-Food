@@ -23,13 +23,13 @@ describe("POST /recipe", () => {
         expect(res.body).to.have.include.keys("name", "id", "image")
       ));
 
-  it("should respond with 422 and shouldnt POST if theres no name / summary", () =>
+  it("should respond with 422 and shouldnt POST if theres no name or summary", () =>
     agent
       .post("/recipe")
       .send({ name: "test" })
       .expect(422)
       .then((res) => {
-        expect(res.text).to.be.equal('{"message":"name and summary required"}');
+        expect(res.text).to.be.equal('{"message":"NAME and SUMMARY are required"}');
       }));
   it("should respond with 422 and shouldnt POST if theres invalid score / healthScore", () =>
     agent
@@ -43,7 +43,7 @@ describe("POST /recipe", () => {
       }));
 
   it("if score/healtScore is undefined it should assing 0", () => 
-     agent
+    agent
       .post("/recipe")
       .send({ name: "test", summary: "sum" })
       .then((res) => {

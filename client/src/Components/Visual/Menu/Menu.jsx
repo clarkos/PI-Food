@@ -5,7 +5,7 @@ import DietsDiv from "./Divs/DietsDiv";
 import { sortName, sortScore } from "../../Redux/actions";
 import ClearFilters from "./Filters/ClearFilters";
 import FilterDiv from "./Divs/SortDiv";
-import useHandleClick from "../../Custom Hooks/useHandleClick";
+import useHandleClick from "../../hooks/useHandleClick";
 import styled from "styled-components";
 import Button from "../../Styles/buttons";
 

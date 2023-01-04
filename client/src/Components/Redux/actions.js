@@ -12,8 +12,6 @@ export const FILTER_DIET = "FILTER_DIET";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const POST_RECIPE = "POST_RECIPE";
 
-
-
 export const getRecipes = (name) => {
   let formated = name.toLowerCase();
   return function (dispatch) {
@@ -55,9 +53,7 @@ export const getTypes = () => {
 };
 
 export const postRecipe = (data) => {
-  axios.post(`http://localhost:3001/recipe`, data) //.then(response => console.log(`response from post`, response))
-
-
+  axios.post(`http://localhost:3001/recipe`, data);
   return (dispatch) => {
     dispatch({type: POST_RECIPE})
   }
@@ -92,7 +88,7 @@ export const sortName = (num) => {
 
 export const sortScore = (num) => {
   return{
-    type:SORT_SCORE,
+    type: SORT_SCORE,
     payload: num,
   }
 }

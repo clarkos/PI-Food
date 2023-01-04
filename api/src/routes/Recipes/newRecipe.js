@@ -7,13 +7,13 @@ router.post("/", async (req, res) => {
   try {
     let { name, summary, score, healthScore, steps, diets } = req.body;
     if (!name || !summary)
-      return res.status(422).json({ message: "name and summary required" });
+      return res.status(422).json({ message: "NAME and SUMMARY are required" });
     if (score < 0 || score > 100)
-      return res.status(422).send({ message: "score must be between 0 -100" });
+      return res.status(422).send({ message: "SCORE must be between 0-100" });
     if (healthScore < 0 || healthScore > 100)
       return res
         .status(422)
-        .json({ message: "healtScore must be between 0 -100" });
+        .json({ message: "HEALTHSCORE must be between 0-100" });
     score = score ? score : 0;
     healthScore = healthScore ? healthScore : 0;
 
@@ -39,7 +39,8 @@ router.post("/", async (req, res) => {
     await newRecipe.setDiets(matchingDiets);
     res.status(201).json(newRecipe);
   } catch (error) {
-    console.log("ERROR MAKING POST REQUEST", error);
+    // console.log("Failed at POST", error);
+    res.status(400).send("Failed at POST ", error.message)
   }
 });
 
