@@ -1,0 +1,48 @@
+.ff__landing {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: url('../../assets/bg01.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.ff__landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ff__landing-container_logo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ff__landing-container_logo img {
+  width: 100%;
+  height: 80vh;
+}
+
+.ff__landing-cta_btn {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #6ea230;
+  text-align: center;
+  /* margin: 1rem; */
+  cursor: pointer;
+  font-family: var(--font-family);
+  border-radius: 5px;
+  background: #6ea230;
+  color: #000;
+  font-weight: bolder;
+}
+
+.ff__landing-cta_btn:hover {
+  background: #AAAA00;
+  border: 1px solid #AAAA00;
+  color: #fff;
+  font-weight: bolder;
+}

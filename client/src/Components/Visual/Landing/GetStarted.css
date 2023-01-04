@@ -1,8 +1,0 @@
-.Landing {
-  height: 100vh;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('../../../assets/landing.png');
-}
