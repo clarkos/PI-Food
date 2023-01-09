@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes } from "../Redux/actions";
+import { getTypes } from "../redux/actions";
 
 function useDiets() {
   const dispatch = useDispatch();

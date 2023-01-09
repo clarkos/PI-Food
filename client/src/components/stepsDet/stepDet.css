@@ -1,0 +1,50 @@
+.ff__recipeDet-steps_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80vw;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #6ea230;
+  border-radius: 10px;
+}
+
+.ff__recipeDet-steps_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ff__recipeDet-steps_title p {
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 800;
+
+}
+
+.ff__recipeDet-steps_title button {
+  padding: 0.25rem 1rem;
+  color: #fff;
+  background: #ff4820;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.ff__recipeDet-steps_steps {
+  margin: 0.5rem 0;
+}
+
+.ff__recipeDet-steps_steps ul {
+  list-style: none;
+}
+
+.ff__recipeDet-steps_steps ul li {
+  font-size: 14px;
+}

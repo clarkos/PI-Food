@@ -1,0 +1,35 @@
+.ff__loader {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ff__loader-container {
+  width: 100%;
+  flex: 1;
+  margin: auto 0;
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ff__loader-container p {
+  font-size: 24px;
+  line-height: 35px;
+  font-weight: 800;
+  margin: 2rem 0
+}
+
+.ff__loader-img {
+  width: 50%;
+  flex: 0.5;
+}
+
+.ff__loader-img img {
+  border-radius: 20%;
+  width: 100%;
+}

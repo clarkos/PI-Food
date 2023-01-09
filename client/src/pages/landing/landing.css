@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: url('../../assets/bg01.jpg') no-repeat;
+  background: url('../../assets/bg02.jpg') no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -10,6 +10,7 @@
 .ff__landing-container {
   display: flex;
   flex-direction: column;
+  /* justify-content: flex-start; */
   align-items: center;
 }
 
@@ -20,18 +21,17 @@
 }
 
 .ff__landing-container_logo img {
-  width: 100%;
+  /* width: 90%; */
   height: 80vh;
 }
 
 .ff__landing-cta_btn {
-  display: block;
+  /* display: block;
   justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  align-items: center; */
+  padding: 1rem 2rem;
   border: 1px solid #6ea230;
   text-align: center;
-  /* margin: 1rem; */
   cursor: pointer;
   font-family: var(--font-family);
   border-radius: 5px;

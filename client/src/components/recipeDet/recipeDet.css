@@ -1,0 +1,138 @@
+/* .ff__detail {} */
+/* @media screen and (max-width:550px){ */
+.ff__detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 30px;
+  font-family: var(--font-family);
+}
+
+.ff__detail-title {
+  width: 100%;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.ff__detail-title p {
+  font-size: 28px;
+  font-weight: 900;
+  padding: 0.5rem 0;
+}
+
+.ff__detail-title span {
+  font-size: 12px;
+  align-items: center;
+}
+
+.ff__detail-title span ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ff__detail-title span ul li {
+  margin: 5px;
+	padding: 2px 5px;
+	float: left;
+  font-weight: 600;
+}
+.ff__detail-title h4 {
+  font-size: 14px;
+}
+
+.ff__detail-image {
+  width: 80vw;
+  margin-bottom: 1rem;
+}
+
+.ff__detail-image img {
+  width: 100%;
+  border-radius: 5%;
+  border: 4px solid #6ea230;
+}
+
+.ff__detail-shortInfo {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.ff__detail-score {
+  margin-bottom: 1rem;
+}
+
+.ff__detail-dish p {
+  font-size: 15px;
+  font-weight: 600;
+}
+.ff__detail-dish ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-left: 10px;
+}
+
+.ff__detail-dish ul li {
+  font-size: 14px;
+	padding: 0 5px;
+  margin-bottom: 10px;
+	float: left;
+  font-weight: normal;
+}
+
+.ff__detail-summary {
+  margin: 1rem;
+}
+
+.ff__detail-summary span {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.ff__detail-summary p {
+  padding-top: 0.5rem;
+  font-size: 15px;
+}
+
+.ff__detail-instructions_hideshow {
+  margin: 1rem 2rem;
+}
+
+.ff__detail-instructions_hideshow button {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: #ff4820;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+/* .ff__detail-instructions {} */
+
+@media screen and (min-width:550px){
+  .ff__detail-summary {
+    width: 80vw;
+  }
+
+  .ff__detail-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ff__detail-image img {
+    max-width: 600px;
+  }
+}
+/* @media screen (min-width:950){} */

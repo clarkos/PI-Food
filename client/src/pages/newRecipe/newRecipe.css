@@ -1,0 +1,209 @@
+button {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: #ff4820;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  /* width: 100%; */
+  min-height: 30px;
+  font-family: var(--font-family);
+  font-size: 13px;
+  line-height: 18px;
+  border: 2px solid #6ea230;
+  padding: 0 1rem;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.ff__newRecipe-main_container {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+}
+
+.ff__newRecipe-header {
+  font-size: 18px;
+  margin: 0.5rem 0;
+}
+
+.ff__newRecipe-form_container {
+  border: 2px solid #6ea230;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 90%;
+}
+
+.ff__newRecipe-form_recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.ff__newRecipe-form_recipe-info input#name {
+  width: 100%;
+  font: 30px;
+  line-height: 40px;
+  margin-bottom: 1rem;
+}
+
+.ff__newRecipe-form-recipe_mainInfo-scores {
+  display: flex;
+  flex-direction: row;
+}
+
+.ff__newRecipe-form-recipe_scores {
+  width: 150px;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+
+.ff__newRecipe-form_recipe-info label {
+  font-size: 15px;
+  line-height: 20px;
+  margin-right: 10px;
+}
+
+.ff__newRecipe-form-recipe_scores input {
+  width: 40px;
+  line-height: 35px;
+  font-weight: 800;
+}
+
+.ff__newRecipe-form-recipe_summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.ff__newRecipe-form-recipe_summary label {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.ff__newRecipe-form-recipe_summary textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+}
+
+.ff__newRecipe-form_diets {
+  width: 100%;
+  border: 2px solid #6ea230;
+  border-radius: 5px;
+  /* height: 250px; */
+}
+
+.ff__newRecipe-form_diets p {
+  font-weight: 600;
+  font-size: 18px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.ff__newRecipe-form_diets-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.ff__newRecipe-form_diets-group {
+  margin: 0.25rem 1.25rem;
+  width: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ff__newRecipe-form_diets-group label {
+  font-size: 15px;
+}
+
+.ff__newRecipe-form_diets-group input {
+  min-height: 12px;
+  padding-left: 1rem
+
+}
+
+.ff__newRecipe-form_steps {
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid #6ea230;
+  border-radius: 5px;
+}
+
+.ff__newRecipe-form_steps h3 {
+  font-size: 18px;
+}
+
+.ff__newRecipe-form_steps p {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 15px;
+  padding-bottom: 5px;
+}
+
+.ff__create-steps_title-insert, 
+.ff__newRecipe-form_steps-insert,
+.ff__create-steps_title-insert input {
+  width: 100%;
+}
+
+.ff__newRecipe-form_steps-insert input {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.ff__newRecipe-form_steps-inserted {
+  width: 100%;
+}
+
+.ff__newRecipe-form_steps-gen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.ff__newRecipe-form_steps-buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0 1rem;
+}
+
+.ff__newRecipe-form_steps-buttons button {
+  margin-left: 10px;
+}
+
+.ff__newRecipe-form_submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+button#submit {
+  font-size: 25px;
+  font-weight: 800;
+  padding: 1rem 2rem;
+}
